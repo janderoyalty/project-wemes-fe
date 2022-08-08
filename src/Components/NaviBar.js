@@ -7,12 +7,18 @@ import Accounts from "./Pages/Accounts";
 import Home from "./Pages/Home";
 import Transactions from "./Pages/Transactions";
 
-const NaviBar = () => {
-  return (
+
+
+
+const NaviBar = ({accounts, transactions}) => {
+  const WEMES_URL = "https://wemes-be.herokuapp.com/";
+  // const WEMES_URL = "http://127.0.0.1:8000/";
+
+return (
     <Router>
       <div>
         <Navbar bg="danger" variant="dark">
-          <Navbar.Brand as={Link} to={"/home"}>
+          <Navbar.Brand as={Link} to={"/"}>
             Wemes
           </Navbar.Brand>
           <Container justify="right">
@@ -26,12 +32,10 @@ const NaviBar = () => {
             </Nav>
           </Container>
         </Navbar>
-      {/* </div>
-      <div> */}
         <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/accounts" element={<Accounts />} />
-        <Route path="/transactions" element={<Transactions />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/accounts" element={<Accounts WEMES_URL={WEMES_URL}/>} />
+          <Route path="/transactions" element={<Transactions WEMES_URL={WEMES_URL}/>} />
         </Routes>
       </div>
     </Router>
