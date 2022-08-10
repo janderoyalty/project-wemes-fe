@@ -4,29 +4,27 @@ import PropTypes from "prop-types";
 
 const AccountsList = ({ accounts }) => {
   const accountInfo = () => {
-    return accounts.map((account) => [
-      // <a href="#">
-      <tr>
-        <td>
-          <a href={account.code}>{account.code}</a>
-        </td>
+    return accounts.map((account, i) => 
+      <tr key={i}>
+        {/* <td>
+          <a href={account.code}>View</a>
+        </td> */}
         <td>{account.last_four}</td>
         <td>{account.first_name}</td>
         <td>{account.last_name}</td>
         <td>{account.phone_num}</td>
         <td>{account.email}</td>
         <td>{account.transactions.length}</td>
-      </tr>,
-    ]);
+      </tr>
+    );
   };
-  // console.log(accounts);
 
   return (
     <>
       <Table striped hover>
         <thead>
           <tr>
-            <th>QR Code</th>
+            {/* <th>QR Code</th> */}
             <th>Account ID</th>
             <th>First Name</th>
             <th>Last Name</th>

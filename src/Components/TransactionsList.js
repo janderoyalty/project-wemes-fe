@@ -2,22 +2,21 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
 
-
-
-const TransactionsList = ({ transactions }) => {
+const TransactionsList = ({ transactionsData }) => {
   const transactionInfo = () => {
-    return transactions.map((transaction) => [
+    return transactionsData.map((transaction, i) => 
       // <a href="#">
-      <tr>
-        <td>{transaction.customer}</td>
-        <td>{transaction.admin}</td>
-        <td>{transaction.drop_off}</td>
-        <td>{transaction.description}</td>
-        <td>{transaction.items.length}</td>
-      </tr>,
-    ]);
+        // <tr>
+        <tr key={i}>
+          {/* <td><a href="./">{transaction.id}</a></td> */}
+          <td>{transaction.customer}</td>
+          <td>{transaction.admin}</td>
+          <td>{transaction.drop_off}</td>
+          <td>{transaction.description}</td>
+          <td>{transaction.items.length}</td>
+        </tr>
+    );
   };
-  console.log(transactions);
 
   return (
     <>
@@ -38,6 +37,7 @@ const TransactionsList = ({ transactions }) => {
 };
 
 TransactionsList.propTypes = {
-  transactions: PropTypes.array.isRequired,
+  transactions: PropTypes.array,
 };
+
 export default TransactionsList;

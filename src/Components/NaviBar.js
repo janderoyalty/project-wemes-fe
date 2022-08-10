@@ -34,8 +34,9 @@ return (
         </Navbar>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/accounts" element={<Accounts WEMES_URL={WEMES_URL}/>} />
-          <Route path="/transactions" element={<Transactions WEMES_URL={WEMES_URL}/>} />
+          <Route path="/accounts" element={<Accounts WEMES_URL={WEMES_URL} />} />
+          <Route path="/account" element={<Transactions WEMES_URL={WEMES_URL} />} />
+          <Route path="/transactions" element={<Transactions WEMES_URL={WEMES_URL} />} />
         </Routes>
       </div>
     </Router>
