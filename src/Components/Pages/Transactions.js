@@ -37,7 +37,7 @@ const Transactions = ({WEMES_URL}) => {
   return (
     <div>
       <h1>Transactions</h1>
-      <TransactionsList transactions={transactionsData} />
+      <TransactionsList transactionsData={transactionsData} />
     </div>
   );
 };
