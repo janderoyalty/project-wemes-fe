@@ -114,7 +114,7 @@ function AddAccountModal(props) {
           <Form.Group className="mb-3" controlId="formPhoneNumber">
             <Form.Label>Phone Number</Form.Label>
             <Form.Control
-              type="text"
+              type="tel"
               name="phone_num"
               placeholder="Phone Number"
               onChange={(event) =>

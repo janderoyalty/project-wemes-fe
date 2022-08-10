@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
+import {FaTrashAlt} from "react-icons/fa";
 
 const AccountsList = ({ accounts }) => {
   const accountInfo = () => {
@@ -21,11 +22,11 @@ const AccountsList = ({ accounts }) => {
 
   return (
     <>
-      <Table striped hover>
+      <Table striped hover date-paganation="true">
         <thead>
           <tr>
             {/* <th>QR Code</th> */}
-            <th>Account ID</th>
+            <th sort="True" >Account ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Phone</th>
