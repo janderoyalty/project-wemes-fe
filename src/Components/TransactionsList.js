@@ -2,20 +2,20 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
 
-const TransactionsList = ({ transactionsData }) => {
+const TransactionsList = ({ transactionData }) => {
   const transactionInfo = () => {
-    return transactionsData.map((transaction, i) => 
+    return transactionData.map((transaction, i) => (
       // <a href="#">
-        // <tr>
-        <tr key={i}>
-          {/* <td><a href="./">{transaction.id}</a></td> */}
-          <td>{transaction.customer}</td>
-          <td>{transaction.admin}</td>
-          <td>{transaction.drop_off}</td>
-          <td>{transaction.description}</td>
-          <td>{transaction.items.length}</td>
-        </tr>
-    );
+      // <tr>
+      <tr key={i}>
+        {/* <td><a href="./">{transaction.id}</a></td> */}
+        <td>{transaction.customer}</td>
+        <td>{transaction.admin}</td>
+        <td>{transaction.drop_off}</td>
+        <td>{transaction.description}</td>
+        <td>{transaction.items.length}</td>
+      </tr>
+    ));
   };
 
   return (

@@ -3,7 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 
 const Transaction = ({ WEMES_URL, transaction_id }) => {
-  // const [transactionsData, setTransactionData] = useState([]);
+  // const [transactionData, setTransactionData] = useState([]);
 
   const getTransaction = () => {
     axios

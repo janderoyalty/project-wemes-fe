@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const AccountsList = ({ accounts }) => {
   const accountInfo = () => {
     return accounts.map((account, i) => 
-      <tr key={i}>
+      <tr key={i} onClick={() => console.log(`CLICK ACCOUNT`)}>
         {/* <td>
           <a href={account.code}>View</a>
         </td> */}

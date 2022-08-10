@@ -17,7 +17,7 @@ const NaviBar = ({accounts, transactions}) => {
 return (
     <Router>
       <div>
-        <Navbar bg="danger" variant="dark">
+        <Navbar bg="warning">
           <Navbar.Brand as={Link} to={"/"}>
             Wemes
           </Navbar.Brand>
@@ -35,7 +35,6 @@ return (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/accounts" element={<Accounts WEMES_URL={WEMES_URL} />} />
-          <Route path="/account" element={<Transactions WEMES_URL={WEMES_URL} />} />
           <Route path="/transactions" element={<Transactions WEMES_URL={WEMES_URL} />} />
         </Routes>
       </div>
