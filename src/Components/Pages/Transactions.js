@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import {FaUserTag} from "react-icons/fa";
+import { FaUserTag } from "react-icons/fa";
 
 function AddTransactionModal(props) {
   const addTransaction = ({
@@ -145,15 +145,15 @@ function AddTransactionModal(props) {
   );
 }
 
+
 const Transactions = ({ WEMES_URL }) => {
   const [transactionData, setTransactionData] = useState([]);
-  const [modalShow, setModalShow] = React.useState(false);
+  const [addTransactionModalShow, setAddTransactionModalShow] = useState(false);
 
   const getTransactions = () => {
     axios
       .get(`${WEMES_URL}transactions/`)
       .then((response) => {
-        // console.log(response);
         const newData = response.data.map((transaction) => {
           return {
             id: transaction.id,
@@ -171,19 +171,25 @@ const Transactions = ({ WEMES_URL }) => {
       });
   };
 
-  useEffect(() => getTransactions(), [transactionData]);
-
+  
+  // useEffect(() => getTransactions(), [transactionData]);
+  useEffect(() => getTransactions(), []);
   return (
     <div>
       <h1>Transactions</h1>
-      <FaUserTag title="add an account" size={50} variant="warning" onClick={() => setModalShow(true)} />
+      <FaUserTag
+        title="add an account"
+        size={50}
+        variant="warning"
+        onClick={() => setAddTransactionModalShow(true)}
+      />
 
       <AddTransactionModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+        show={addTransactionModalShow}
+        onHide={() => setAddTransactionModalShow(false)}
         WEMES_URL={WEMES_URL}
       />
-      <TransactionsList transactionData={transactionData} />
+      <TransactionsList WEMES_URL={WEMES_URL} transactionData={transactionData} />
     </div>
   );
 };

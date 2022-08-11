@@ -114,7 +114,7 @@ function AddAccountModal(props) {
           <Form.Group className="mb-3" controlId="formPhoneNumber">
             <Form.Label>Phone Number</Form.Label>
             <Form.Control
-              type="text"
+              type="tel"
               name="phone_num"
               placeholder="Phone Number"
               onChange={(event) =>
@@ -195,7 +195,7 @@ const Accounts = ({ WEMES_URL }) => {
   return (
     <div>
       <h1>Accounts</h1>
-      <FaUserPlus title="add an account" size={50} variant="warning" onClick={() => setModalShow(true)} />
+      <FaUserPlus title="add an account" size={50} onClick={() => setModalShow(true)} />
 
       <AddAccountModal
         show={modalShow}
