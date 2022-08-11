@@ -28,7 +28,7 @@ const DisplayTransactionModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add New Transaction
+          Edit New Transaction
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>BODY </Modal.Body>
@@ -37,7 +37,8 @@ const DisplayTransactionModal = (props) => {
 };
 
 const TransactionsList = ({ transactionData, WEMES_URL }) => {
-  // const [displayTransactionModalShow, setDisplayTransactionModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const[clickedIndex, setClickedIndex] = useState(0)
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
 
@@ -52,7 +53,10 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
     return sortedTransactions.map((transaction, index) => (
       <tr
         key={index}
-        onClick={() => DisplayTransactionModal({ WEMES_URL, index })}
+        onClick={() => {
+          setClickedIndex(index)
+          setModalShow(true);
+        }}
       >
         <td>{transaction.customer}</td>
         <td>{transaction.admin}</td>
@@ -66,6 +70,12 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
   return (
     <>
       <div>
+      <DisplayTransactionModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          WEMES_URL={WEMES_URL}
+          index={clickedIndex}
+        />
         <SortTransactionMenu
           sortBy={sortBy}
           onSortByChange={(sortOption) => {
@@ -80,11 +90,6 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
       <Table striped hover>
         <thead>
           <tr>
-            {/* <DisplayTransactionModal
-              show={displayTransactionModalShow}
-              onHide={() => setDisplayTransactionModalShow(false)}
-              WEMES_URL={WEMES_URL}
-            /> */}
             <th>Customer</th>
             <th>Admin</th>
             <th>Dropped Off</th>

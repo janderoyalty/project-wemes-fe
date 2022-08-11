@@ -163,7 +163,7 @@ function AddAccountModal(props) {
 
 const Accounts = ({ WEMES_URL }) => {
   const [accountData, setAccountData] = useState([]);
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const getAccounts = () => {
     axios
