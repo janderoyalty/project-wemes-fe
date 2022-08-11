@@ -145,15 +145,15 @@ function AddTransactionModal(props) {
   );
 }
 
+
 const Transactions = ({ WEMES_URL }) => {
-  const [modalAddTransactionShow, setAddTransactionModalShow] = useState(false);
   const [transactionData, setTransactionData] = useState([]);
+  const [addTransactionModalShow, setAddTransactionModalShow] = useState(false);
 
   const getTransactions = () => {
     axios
       .get(`${WEMES_URL}transactions/`)
       .then((response) => {
-        // console.log(response);
         const newData = response.data.map((transaction) => {
           return {
             id: transaction.id,
@@ -171,8 +171,9 @@ const Transactions = ({ WEMES_URL }) => {
       });
   };
 
-  useEffect(() => getTransactions(), [transactionData]);
-
+  
+  // useEffect(() => getTransactions(), [transactionData]);
+  useEffect(() => getTransactions(), []);
   return (
     <div>
       <h1>Transactions</h1>
@@ -184,11 +185,11 @@ const Transactions = ({ WEMES_URL }) => {
       />
 
       <AddTransactionModal
-        show={modalAddTransactionShow}
+        show={addTransactionModalShow}
         onHide={() => setAddTransactionModalShow(false)}
         WEMES_URL={WEMES_URL}
       />
-      <TransactionsList transactionData={transactionData} />
+      <TransactionsList WEMES_URL={WEMES_URL} transactionData={transactionData} />
     </div>
   );
 };
