@@ -146,9 +146,8 @@ function AddTransactionModal(props) {
 }
 
 const Transactions = ({ WEMES_URL }) => {
+  const [modalAddTransactionShow, setAddTransactionModalShow] = useState(false);
   const [transactionData, setTransactionData] = useState([]);
-  const [modalAddTransactionShow, setAddTransactionModalShow] =
-    React.useState(false);
 
   const getTransactions = () => {
     axios
