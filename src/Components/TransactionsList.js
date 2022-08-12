@@ -2,43 +2,12 @@ import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
 import SortTransactionMenu from "../Components/SortTransactionMenu";
-import axios from "axios";
-import Modal from "react-bootstrap/Modal";
+import DisplayTransactionModal from "./Modals/DisplayTransactionModal";
 
-// DISPLAY TRANSACTION
-const DisplayTransactionModal = (props) => {
-  console.log("TRANSACTION CLICK");
-  console.log(props.WEMES_URL, props.index);
-
-  axios
-    .get(`${props.WEMES_URL}transactions/${props.index + 1}/`)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((err) => {
-      alert(err);
-    });
-
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Edit New Transaction
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>BODY </Modal.Body>
-    </Modal>
-  );
-};
 
 const TransactionsList = ({ transactionData, WEMES_URL }) => {
   const [modalShow, setModalShow] = useState(false);
-  const[clickedIndex, setClickedIndex] = useState(0)
+  const [clickedIndex, setClickedIndex] = useState(0);
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
 
@@ -54,7 +23,7 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
       <tr
         key={index}
         onClick={() => {
-          setClickedIndex(index)
+          setClickedIndex(index);
           setModalShow(true);
         }}
       >
@@ -70,7 +39,7 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
   return (
     <>
       <div>
-      <DisplayTransactionModal
+        <DisplayTransactionModal
           show={modalShow}
           onHide={() => setModalShow(false)}
           WEMES_URL={WEMES_URL}

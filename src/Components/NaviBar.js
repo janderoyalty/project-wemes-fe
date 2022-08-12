@@ -6,15 +6,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Accounts from "./Pages/Accounts";
 import Home from "./Pages/Home";
 import Transactions from "./Pages/Transactions";
+import Items from "./Pages/Items";
 
+const NaviBar = ({ accounts, transactions }) => {
+  // const WEMES_URL = "https://wemes-be.herokuapp.com/";
+  const WEMES_URL = "http://127.0.0.1:8000/";
 
-
-
-const NaviBar = ({accounts, transactions}) => {
-  const WEMES_URL = "https://wemes-be.herokuapp.com/";
-  // const WEMES_URL = "http://127.0.0.1:8000/";
-
-return (
+  return (
     <Router>
       <div>
         <Navbar bg="warning">
@@ -29,13 +27,23 @@ return (
               <Nav.Link as={Link} to={"/transactions"}>
                 Transactions
               </Nav.Link>
+              <Nav.Link as={Link} to={"/items"}>
+                Items
+              </Nav.Link>
             </Nav>
           </Container>
         </Navbar>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/accounts" element={<Accounts WEMES_URL={WEMES_URL} />} />
-          <Route path="/transactions" element={<Transactions WEMES_URL={WEMES_URL} />} />
+          <Route
+            path="/accounts"
+            element={<Accounts WEMES_URL={WEMES_URL} />}
+          />
+          <Route
+            path="/transactions"
+            element={<Transactions WEMES_URL={WEMES_URL} />}
+          />
+          <Route path="/items" element={<Items WEMES_URL={WEMES_URL} />} />
         </Routes>
       </div>
     </Router>
