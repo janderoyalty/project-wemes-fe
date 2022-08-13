@@ -17,14 +17,14 @@ const ListItems = ({ items }) => {
   const itemInfo = () => {
     return sortedItems.map((item, index) => (
       <tr key={index} onClick={() => console.log(`CLICK ACCOUNT`)}>
-        <td>{item.tag_id}</td>
+        {/* <td>{item.tag_id}</td> */}
         <td>{item.drop_off}</td>
         <td>{item.due_date}</td>
-        {/* <td>{item.type}</td>
-        <td>{item.color}</td> */}
+        <td>{item.type}</td>
+        <td>{item.color}</td>
         <td>{item.is_shoe === true ? "shoe" : "sewing"}</td>
-        {/* <td>{item.follow_up}</td> */}
-        {/* <td>{item.description}</td> */}
+        <td>{item.follow_up=== true ? "yes": "no"}</td>
+        <td>{item.description}</td>
         <td>{item.transaction}</td>
       </tr>
     ));
@@ -47,14 +47,14 @@ const ListItems = ({ items }) => {
       <Table striped hover date-paganation="true">
         <thead>
           <tr>
-            <th>Tag ID</th>
+            {/* <th>Tag ID</th> */}
             <th>Drop Off Date</th>
             <th>Due Date</th>
-            {/* <th>Type</th>
-            <th>Color</th> */}
+            <th>Type</th>
+            <th>Color</th>
             <th>Is Shoe</th>
-            {/* <th>Follow-Up</th>
-            <th>Description</th> */}
+            <th>Follow-Up</th>
+            <th>Description</th>
             <th>Transaction</th>
           </tr>
         </thead>

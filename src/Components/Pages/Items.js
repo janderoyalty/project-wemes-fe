@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListItems from "../ListItems";
 import axios from "axios";
-import { FaUserPlus } from "react-icons/fa";
+import { FaTags } from "react-icons/fa";
 import AddItemModal from "../Modals/AddItemModal";
 
 const Items = ({ wemes_url }) => {
@@ -32,12 +32,17 @@ const Items = ({ wemes_url }) => {
       });
   };
 
-  useEffect(() => getItems(), [itemData]);
+  useEffect(() => getItems(), []);
 
+  const hideModal = () => {
+    setModalShow(false);
+    getItems()
+  }
+  
   return (
     <div>
       <h1>Items</h1>
-      <FaUserPlus
+      <FaTags
         title="add an item"
         size={50}
         onClick={() => setModalShow(true)}
@@ -45,7 +50,7 @@ const Items = ({ wemes_url }) => {
 
       <AddItemModal
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => hideModal()}
         wemes_url={wemes_url}
       />
       <ListItems items={itemData} />

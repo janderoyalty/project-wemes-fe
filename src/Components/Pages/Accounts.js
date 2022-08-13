@@ -33,7 +33,12 @@ const Accounts = ({ wemes_url }) => {
       });
   };
 
-  useEffect(() => getAccounts(), [accountData]);
+  useEffect(() => getAccounts(), []);
+
+  const hideModal = () => {
+    setModalShow(false);
+    getAccounts();
+  };
 
   return (
     <div>
@@ -46,7 +51,7 @@ const Accounts = ({ wemes_url }) => {
 
       <AddAccountModal
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => hideModal()}
         wemes_url={wemes_url}
       />
       <ListAccounts accounts={accountData} />

@@ -14,27 +14,27 @@ const SortMenuItems = ({
       <h4 className="sort-board-menu--label">sort by</h4>
       <Button
         variant="warning"
-        onClick={() => onSortByChange("last_four")}
+        onClick={() => onSortByChange("drop_off")}
         className="board-menu-item"
       >
-        account id{" "}
-        {sortBy === "last_four" && <BiCheck id="board-menu--check-mark" />}
+        drop off date{" "}
+        {sortBy === "drop_off" && <BiCheck id="board-menu--check-mark" />}
       </Button>
       <Button
         variant="warning"
-        onClick={() => onSortByChange("last_name")}
+        onClick={() => onSortByChange("due_date")}
         className="board-menu-item"
       >
-        last name{" "}
-        {sortBy === "last_name" && <BiCheck id="board-menu--check-mark" />}
+        due date{" "}
+        {sortBy === "due_date" && <BiCheck id="board-menu--check-mark" />}
       </Button>
       <Button
         variant="warning"
-        onClick={() => onSortByChange("first_name")}
+        onClick={() => onSortByChange("transaction")}
         className="board-menu-item"
       >
-        first name{" "}
-        {sortBy === "first_name" && <BiCheck id="board-menu--check-mark" />}
+        transaction{" "}
+        {sortBy === "transaction" && <BiCheck id="board-menu--check-mark" />}
       </Button>
       <br />
       {/* <h4 className="sort-board-menu--label">order</h4> */}
