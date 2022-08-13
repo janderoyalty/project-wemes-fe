@@ -10,7 +10,7 @@ const Items = ({ wemes_url }) => {
 
   const getItems = () => {
     axios
-      .get(`${wemes_url}users/`)
+      .get(`${wemes_url}items/`)
       .then((response) => {
         const newData = response.data.map((item) => {
           return {
@@ -19,7 +19,7 @@ const Items = ({ wemes_url }) => {
             due_date: item.due_date,
             type: item.type,
             color: item.color,
-            in_shoe: item.in_shoe,
+            is_shoe: item.is_shoe,
             follow_up: item.follow_up,
             description: item.description,
             transaction: item.transaction,

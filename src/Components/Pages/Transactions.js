@@ -8,6 +8,7 @@ import AddTransactionModal from "../Modals/AddTransactionModal";
 const Transactions = ({ wemes_url }) => {
   const [transactionData, setTransactionData] = useState([]);
   const [addTransactionModalShow, setAddTransactionModalShow] = useState(false);
+  const [accountData, setAccountData] = useState([]);
 
   const getTransactions = () => {
     axios
@@ -30,8 +31,34 @@ const Transactions = ({ wemes_url }) => {
       });
   };
 
+  const getAccounts = () => {
+    axios
+      .get(`${wemes_url}users/`)
+      .then((response) => {
+        const newData = response.data.map((account) => {
+          return {
+            id: account.id,
+            first_name: account.first_name,
+            last_name: account.last_name,
+            admin: account.admin,
+            is_active: account.is_active,
+          };
+        });
+        setAccountData(newData);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+
   // useEffect(() => getTransactions(), [transactionData]);
-  useEffect(() => getTransactions(), [transactionData]);
+  useEffect(() => getTransactions(), []);
+
+  const hideModal = () => {
+    setAddTransactionModalShow(false);
+    getTransactions()
+  }
   return (
     <div>
       <h1>Transactions</h1>
@@ -44,12 +71,13 @@ const Transactions = ({ wemes_url }) => {
 
       <AddTransactionModal
         show={addTransactionModalShow}
-        onHide={() => setAddTransactionModalShow(false)}
+        onHide={() => hideModal()}
         wemes_url={wemes_url}
       />
       <ListTransactions
         wemes_url={wemes_url}
         transactionData={transactionData}
+        accountData={accountData}
       />
     </div>
   );

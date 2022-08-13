@@ -22,7 +22,7 @@ const ListItems = ({ items }) => {
         <td>{item.due_date}</td>
         {/* <td>{item.type}</td>
         <td>{item.color}</td> */}
-        <td>{item.is_shoe}</td>
+        <td>{item.is_shoe === true ? "shoe" : "sewing"}</td>
         {/* <td>{item.follow_up}</td> */}
         {/* <td>{item.description}</td> */}
         <td>{item.transaction}</td>
