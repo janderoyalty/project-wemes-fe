@@ -14,7 +14,7 @@ function AddTransactionModal(props) {
     items,
   }) => {
     axios
-      .post(`${props.WEMES_URL}transactions/`, {
+      .post(`${props.wemes_url}transactions/`, {
         drop_off: drop_off,
         admin: admin,
         customer: customer,

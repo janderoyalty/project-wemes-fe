@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
-import SortTransactionMenu from "../Components/SortTransactionMenu";
+import SortMenuTransactions from "../Components/SortMenuTransactions";
 import DisplayTransactionModal from "./Modals/DisplayTransactionModal";
 
-
-const TransactionsList = ({ transactionData, WEMES_URL }) => {
+const ListTransactions = ({ transactionData, wemes_url }) => {
   const [modalShow, setModalShow] = useState(false);
   const [clickedIndex, setClickedIndex] = useState(0);
   const [sortBy, setSortBy] = useState("id");
@@ -42,10 +41,10 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
         <DisplayTransactionModal
           show={modalShow}
           onHide={() => setModalShow(false)}
-          WEMES_URL={WEMES_URL}
+          wemes_url={wemes_url}
           index={clickedIndex}
         />
-        <SortTransactionMenu
+        <SortMenuTransactions
           sortBy={sortBy}
           onSortByChange={(sortOption) => {
             setSortBy(sortOption);
@@ -72,8 +71,8 @@ const TransactionsList = ({ transactionData, WEMES_URL }) => {
   );
 };
 
-TransactionsList.propTypes = {
+ListTransactions.propTypes = {
   transactions: PropTypes.array,
 };
 
-export default TransactionsList;
+export default ListTransactions;

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
-import SortItemMenu from "./SortItemMenu";
+import SortMenuItems from "./SortMenuItems";
 
-const ItemsList = ({ items }) => {
-    const [sortBy, setSortBy] = useState("id");
+const ListItems = ({ items }) => {
+  const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
 
   const sortedItems = items.sort((a, b) => {
@@ -15,22 +15,25 @@ const ItemsList = ({ items }) => {
   });
 
   const itemInfo = () => {
-    return sortedItems.map((item, i) => 
-      <tr key={i} onClick={() => console.log(`CLICK ACCOUNT`)}>
-        <td>{item.last_four}</td>
-        <td>{item.first_name}</td>
-        <td>{item.last_name}</td>
-        <td>{item.phone_num}</td>
-        <td>{item.email}</td>
-        <td>{item.transactions.length}</td>
+    return sortedItems.map((item, index) => (
+      <tr key={index} onClick={() => console.log(`CLICK ACCOUNT`)}>
+        <td>{item.tag_id}</td>
+        <td>{item.drop_off}</td>
+        <td>{item.due_date}</td>
+        {/* <td>{item.type}</td>
+        <td>{item.color}</td> */}
+        <td>{item.is_shoe}</td>
+        {/* <td>{item.follow_up}</td> */}
+        {/* <td>{item.description}</td> */}
+        <td>{item.transaction}</td>
       </tr>
-    );
+    ));
   };
 
   return (
     <>
-          <div>
-        <SortItemMenu
+      <div>
+        <SortMenuItems
           sortBy={sortBy}
           onSortByChange={(sortOption) => {
             setSortBy(sortOption);
@@ -44,12 +47,15 @@ const ItemsList = ({ items }) => {
       <Table striped hover date-paganation="true">
         <thead>
           <tr>
-            <th>Item ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Transactions</th>
+            <th>Tag ID</th>
+            <th>Drop Off Date</th>
+            <th>Due Date</th>
+            {/* <th>Type</th>
+            <th>Color</th> */}
+            <th>Is Shoe</th>
+            {/* <th>Follow-Up</th>
+            <th>Description</th> */}
+            <th>Transaction</th>
           </tr>
         </thead>
         <tbody>{itemInfo()}</tbody>
@@ -58,8 +64,8 @@ const ItemsList = ({ items }) => {
   );
 };
 
-ItemsList.propTypes = {
+ListItems.propTypes = {
   items: PropTypes.array.isRequired,
 };
 
-export default ItemsList;
+export default ListItems;

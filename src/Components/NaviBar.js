@@ -9,8 +9,8 @@ import Transactions from "./Pages/Transactions";
 import Items from "./Pages/Items";
 
 const NaviBar = ({ accounts, transactions }) => {
-  // const WEMES_URL = "https://wemes-be.herokuapp.com/";
-  const WEMES_URL = "http://127.0.0.1:8000/";
+  const wemes_url = "https://wemes-be.herokuapp.com/";
+  // const wemes_url = "http://127.0.0.1:8000/";
 
   return (
     <Router>
@@ -37,13 +37,13 @@ const NaviBar = ({ accounts, transactions }) => {
           <Route path="/" element={<Home />} />
           <Route
             path="/accounts"
-            element={<Accounts WEMES_URL={WEMES_URL} />}
+            element={<Accounts wemes_url={wemes_url} />}
           />
           <Route
             path="/transactions"
-            element={<Transactions WEMES_URL={WEMES_URL} />}
+            element={<Transactions wemes_url={wemes_url} />}
           />
-          <Route path="/items" element={<Items WEMES_URL={WEMES_URL} />} />
+          <Route path="/items" element={<Items wemes_url={wemes_url} />} />
         </Routes>
       </div>
     </Router>

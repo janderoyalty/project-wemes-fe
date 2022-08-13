@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TransactionsList from "../TransactionsList";
+import ListTransactions from "../ListTransactions";
 import PropTypes from "prop-types";
 import { FaUserTag } from "react-icons/fa";
 import AddTransactionModal from "../Modals/AddTransactionModal";
 
-
-
-const Transactions = ({ WEMES_URL }) => {
+const Transactions = ({ wemes_url }) => {
   const [transactionData, setTransactionData] = useState([]);
   const [addTransactionModalShow, setAddTransactionModalShow] = useState(false);
 
   const getTransactions = () => {
     axios
-      .get(`${WEMES_URL}transactions/`)
+      .get(`${wemes_url}transactions/`)
       .then((response) => {
         const newData = response.data.map((transaction) => {
           return {
@@ -32,7 +30,6 @@ const Transactions = ({ WEMES_URL }) => {
       });
   };
 
-  
   // useEffect(() => getTransactions(), [transactionData]);
   useEffect(() => getTransactions(), [transactionData]);
   return (
@@ -48,15 +45,18 @@ const Transactions = ({ WEMES_URL }) => {
       <AddTransactionModal
         show={addTransactionModalShow}
         onHide={() => setAddTransactionModalShow(false)}
-        WEMES_URL={WEMES_URL}
+        wemes_url={wemes_url}
       />
-      <TransactionsList WEMES_URL={WEMES_URL} transactionData={transactionData} />
+      <ListTransactions
+        wemes_url={wemes_url}
+        transactionData={transactionData}
+      />
     </div>
   );
 };
 
 Transactions.propTypes = {
-  WEMES_URL: PropTypes.string.isRequired,
+  wemes_url: PropTypes.string.isRequired,
 };
 
 export default Transactions;

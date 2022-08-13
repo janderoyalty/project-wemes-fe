@@ -15,7 +15,7 @@ function AddAccountModal(props) {
     transactions,
   }) => {
     axios
-      .post(`${props.WEMES_URL}users/`, {
+      .post(`${props.wemes_url}users/`, {
         first_name: first_name,
         last_name: last_name,
         phone_num: phone_num,

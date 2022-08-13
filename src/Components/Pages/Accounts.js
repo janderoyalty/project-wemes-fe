@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import AccountsList from "../AccountsList";
+import ListAccounts from "../ListAccounts";
 import axios from "axios";
-
 import { FaUserPlus } from "react-icons/fa";
 import AddAccountModal from "../Modals/AddAccountModal";
 
-const Accounts = ({ WEMES_URL }) => {
+const Accounts = ({ wemes_url }) => {
   const [accountData, setAccountData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 
   const getAccounts = () => {
     axios
-      .get(`${WEMES_URL}users/`)
+      .get(`${wemes_url}users/`)
       .then((response) => {
         const newData = response.data.map((account) => {
           return {
@@ -48,9 +47,9 @@ const Accounts = ({ WEMES_URL }) => {
       <AddAccountModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        WEMES_URL={WEMES_URL}
+        wemes_url={wemes_url}
       />
-      <AccountsList accounts={accountData} />
+      <ListAccounts accounts={accountData} />
     </div>
   );
 };

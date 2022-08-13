@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
-import SortAccountMenu from "../Components/SortAccountMenu";
+import SortMenuAccounts from "./SortMenuAccounts";
 
-const AccountsList = ({ accounts }) => {
-    const [sortBy, setSortBy] = useState("id");
+const ListAccounts = ({ accounts }) => {
+  const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
 
   const sortedAccounts = accounts.sort((a, b) => {
@@ -15,11 +15,8 @@ const AccountsList = ({ accounts }) => {
   });
 
   const accountInfo = () => {
-    return sortedAccounts.map((account, i) => 
-      <tr key={i} onClick={() => console.log(`CLICK ACCOUNT`)}>
-        {/* <td>
-          <a href={account.code}>View</a>
-        </td> */}
+    return sortedAccounts.map((account, index) => (
+      <tr key={index} onClick={() => console.log(`CLICK ACCOUNT`)}>
         <td>{account.last_four}</td>
         <td>{account.first_name}</td>
         <td>{account.last_name}</td>
@@ -27,13 +24,13 @@ const AccountsList = ({ accounts }) => {
         <td>{account.email}</td>
         <td>{account.transactions.length}</td>
       </tr>
-    );
+    ));
   };
 
   return (
     <>
-          <div>
-        <SortAccountMenu
+      <div>
+        <SortMenuAccounts
           sortBy={sortBy}
           onSortByChange={(sortOption) => {
             setSortBy(sortOption);
@@ -47,8 +44,7 @@ const AccountsList = ({ accounts }) => {
       <Table striped hover date-paganation="true">
         <thead>
           <tr>
-            {/* <th>QR Code</th> */}
-            <th sort="True" >Account ID</th>
+            <th>Account ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Phone</th>
@@ -62,8 +58,8 @@ const AccountsList = ({ accounts }) => {
   );
 };
 
-AccountsList.propTypes = {
+ListAccounts.propTypes = {
   accounts: PropTypes.array.isRequired,
 };
 
-export default AccountsList;
+export default ListAccounts;
