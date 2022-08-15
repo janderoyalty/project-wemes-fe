@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import AddItemModal from "./AddItemModal";
 
+
 function DisplayTransactionModal(props) {
   const [modalShow, setModalShow] = useState(false);
 
