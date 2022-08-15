@@ -9,6 +9,7 @@ const SortMenuItems = ({
   orderBy,
   onOrderByChange,
 }) => {
+  
   return (
     <section id="sort-board-menu">
       <h4 className="sort-board-menu--label">sort by</h4>

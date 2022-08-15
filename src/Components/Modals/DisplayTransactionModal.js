@@ -26,15 +26,6 @@ function DisplayTransactionModal(props) {
       });
   };
 
-
-  // const [transactionData, setTransactionData] = useState({
-  //   drop_off: "",
-  //   admin: "",
-  //   customer: "",
-  //   description: "",
-  //   items: [],
-  // });
-
   // const submitTransactionData = (event) => {
   //   event.preventDefault();
   //   dispalyTransaction(transactionData);
@@ -69,7 +60,82 @@ function DisplayTransactionModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Button
+        {transactionData}
+        {/* <Form size="lg" onSubmit={submitTransactionData}>
+          <Form.Group className="mb-3" controlId="formDropOff">
+            <Form.Label>Drop Off Date</Form.Label>
+            <Form.Control
+              type="date"
+              placeholder="12/12/22"
+              onChange={(event) =>
+                setTransactionData({
+                  ...transactionData,
+                  drop_off: event.target.value,
+                })
+              }
+            />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formAdmin">
+            <Form.Label>Your Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="Who are you?"
+              onChange={(event) =>
+                setTransactionData({
+                  ...transactionData,
+                  admin: event.target.value,
+                })
+              }
+            />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formCustomer">
+            <Form.Label>Customer</Form.Label>
+            <Form.Control
+              type="text"
+              name="customer"
+              placeholder="Customer"
+              onChange={(event) =>
+                setTransactionData({
+                  ...transactionData,
+                  customer: event.target.value,
+                })
+              }
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formDescription">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              type="description"
+              placeholder="Leave a Note"
+              onChange={(event) =>
+                setTransactionData({
+                  ...transactionData,
+                  description: event.target.value,
+                })
+              }
+            />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formItems">
+            <Form.Label>Items</Form.Label>
+            <Form.Control type="text" placeholder="" disabled />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group> */}
+        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" value="false" label="Check me out" />
+      </Form.Group> */}
+        {/* 
+          <Button variant="warning" type="submit" onClick={props.onHide}>
+            Submit
+          </Button>
+        </Form> */}
+        <Button
           variant="warning"
           type="submit"
           onClick={() => setModalShow(true)}

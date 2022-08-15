@@ -10,6 +10,27 @@ const Transactions = ({ wemes_url }) => {
   const [addTransactionModalShow, setAddTransactionModalShow] = useState(false);
   const [accountData, setAccountData] = useState([]);
 
+  const getAccounts = () => {
+    axios
+      .get(`${wemes_url}users/`)
+      .then((response) => {
+        const newData = response.data.map((account) => {
+          return {
+            id: account.id,
+            first_name: account.first_name,
+            last_name: account.last_name,
+            admin: account.admin,
+            is_active: account.is_active,
+          };
+        });
+        setAccountData(newData);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+
   const getTransactions = () => {
     axios
       .get(`${wemes_url}transactions/`)
@@ -25,26 +46,7 @@ const Transactions = ({ wemes_url }) => {
           };
         });
         setTransactionData(newData);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  const getAccounts = () => {
-    axios
-      .get(`${wemes_url}users/`)
-      .then((response) => {
-        const newData = response.data.map((account) => {
-          return {
-            id: account.id,
-            first_name: account.first_name,
-            last_name: account.last_name,
-            admin: account.admin,
-            is_active: account.is_active,
-          };
-        });
-        setAccountData(newData);
+        getAccounts()
       })
       .catch((err) => {
         alert(err);

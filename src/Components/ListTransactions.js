@@ -4,12 +4,19 @@ import PropTypes from "prop-types";
 import SortMenuTransactions from "../Components/SortMenuTransactions";
 import DisplayTransactionModal from "./Modals/DisplayTransactionModal";
 
-const ListTransactions = ({ transactionData, wemes_url }) => {
+const ListTransactions = ({ transactionData, wemes_url, accountData }) => {
   const [modalShow, setModalShow] = useState(false);
   const [clickedIndex, setClickedIndex] = useState(0);
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
 
+    // const getAccountsNames = (accountData, transactionData) => {
+  //   if (transactionData.admin === accountData.id) {
+  //     transactionData.admin = `${accountData.first_name} ${accountData.last_name}`;
+  //   }
+  // };
+  // getAccountsNames()
+  
   const sortedTransactions = transactionData.sort((a, b) => {
     let order = orderBy === "asc" ? 1 : -1;
     let sortByA = sortBy === "id" ? a[sortBy] : a[sortBy];
@@ -17,6 +24,7 @@ const ListTransactions = ({ transactionData, wemes_url }) => {
     return sortByA < sortByB ? -1 * order : 1 * order;
   });
 
+  
   const transactionInfo = () => {
     return sortedTransactions.map((transaction, index) => (
       <tr
