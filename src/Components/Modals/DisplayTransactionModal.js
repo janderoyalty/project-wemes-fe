@@ -4,18 +4,28 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import AddItemModal from "./AddItemModal";
+
 
 function DisplayTransactionModal(props) {
-  // const dispalyTransaction = () => {
-  //   axios
-  //   .get(`${props.wemes_url}transactions/${props.index + 1}/`)
-  //   .then((response) => {
-  //     console.log(response.data);
-  //   })
-  //   .catch((err) => {
-  //     alert(err);
-  //   });
-  // }
+  const [modalShow, setModalShow] = useState(false);
+
+  const [transactionData, setTransactionData] = useState({});
+
+  // console.log(props);
+  const dispalyTransaction = () => {
+    axios
+      .get(`${props.wemes_url}transactions/${props.index + 1}/`)
+      .then((response) => {
+        console.log(response.data);
+        setTransactionData(response.data)
+        // return response.data;
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
 
   // const [transactionData, setTransactionData] = useState({
   //   drop_off: "",
@@ -55,10 +65,23 @@ function DisplayTransactionModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add New Transaction
+          Edit Transaction
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>BODY </Modal.Body>
+      <Modal.Body>
+      <Button
+          variant="warning"
+          type="submit"
+          onClick={() => setModalShow(true)}
+        >
+          Add Item
+        </Button>
+        <AddItemModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          wemes_url={props.wemes_url}
+        />{" "}
+      </Modal.Body>
     </Modal>
   );
 }

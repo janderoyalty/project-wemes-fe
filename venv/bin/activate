@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/janderoyalty/Library/Mobile Documents/com~apple~CloudDocs/Jay/Ada/C17/Project Wemes FE/project-wemes-fe/venv"
+VIRTUAL_ENV="/Users/janderoyalty/Library/Mobile Documents/com~apple~CloudDocs/Jay/Ada/C17/ada/Project Wemes 4/project-wemes-fe/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
