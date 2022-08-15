@@ -53,6 +53,7 @@ const Items = ({ wemes_url }) => {
         onHide={() => hideModal()}
         wemes_url={wemes_url}
       />
+      
       <ListItems items={itemData} />
     </div>
   );

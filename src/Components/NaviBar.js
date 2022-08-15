@@ -7,6 +7,7 @@ import Accounts from "./Pages/Accounts";
 import Home from "./Pages/Home";
 import Transactions from "./Pages/Transactions";
 import Items from "./Pages/Items";
+import Image from "react-bootstrap/Image";
 
 const NaviBar = ({ accounts, transactions }) => {
   const wemes_url = "https://wemes-be.herokuapp.com/";
@@ -16,10 +17,10 @@ const NaviBar = ({ accounts, transactions }) => {
     <Router>
       <div>
         <Navbar bg="warning">
-          <Navbar.Brand as={Link} to={"/"}>
-            Wemes
-          </Navbar.Brand>
           <Container justify="right">
+            <Navbar.Brand as={Link} to={"/"}>
+              Wemes
+            </Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link as={Link} to={"/accounts"}>
                 Accounts
